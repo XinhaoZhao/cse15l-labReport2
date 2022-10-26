@@ -63,7 +63,17 @@ class SearchEngine {
   }
 ```  
 Screenshots of running:  
-![image](https://i.imgur.com/vQNNcJB.png)  
+1. ![image](https://i.imgur.com/vQNNcJB.png)  
 In the above screenshot, the programm called handleRequest(). The argument is "xinhao" which is stored in list. The value of list changes,  
 now the value of list is {"xinhao"}.  
+  
+2. ![image](https://i.imgur.com/dtkh1jQ.png)  
+In the above screenshot, the programm called handleRequest(). The argument is "zhao" which is stored in list. The value of list changes,  
+now the value of list is {"xinhao", "zhao"}.    
+  
+3. ![image](https://i.imgur.com/Ioe6fjj.png)  
+In the above screenshot, the programm called handleRequest() and search(). The argument is "in". The value result is "xinhao" because xinhao contains "in".  
+  
+
+
 
