@@ -77,11 +77,6 @@ In the above screenshot, the programm called handleRequest() and search(). The a
 # Part 2
 1. In the ListExample file, the failure-inducing input for function filter() is:  
 ```
-import static org.junit.Assert.*;
-import java.util.Arrays;
-import java.util.List;
-import org.junit.*;
-
 public class ListTests {
     String[] arr = new String[] {"a", "b", "c", "d"};
     List<String> eg = Arrays.asList(arr);
@@ -96,13 +91,26 @@ public class ListTests {
     public void testFilter(){
 
         assertEquals(eg, ListExamples.filter(eg, sc));
+    }
 ```  
 The symptom is that the expected output is `[a, b, c, d]` while the actual output is `[d, c, b, a]`.  
 The bug is that the program always puts the checked element of the list at index 0, which is the beginning of the list. 
 By doing so, it changes the order of the original input. Therefore, we see that the actual output is not in the same order as the
 original input.  
-
   
+2. In the ArrayExamples file, the failure-inducing input for reverseInPlace function is  
+```
+@Test 
+	public void testReverseInPlace() {
+    int[] input1 = { 3,2,1 };
+    ArrayExamples.reverseInPlace(input1);
+    assertArrayEquals(new int[]{1,2,3}, input1);
+	}
+```  
+The bug is that in each iteration, one element inside the array is being replaced by another one. In this case,  
+3 is assigned to be 1, while 1 stays unchanged. Now, the array is [1,2,1], in which we see that 3 is completely replaced,  
+therefore the incorrect output.  
+
 
 
 
