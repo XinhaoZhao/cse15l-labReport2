@@ -74,6 +74,35 @@ now the value of list is {"xinhao", "zhao"}.
 3. ![image](https://i.imgur.com/Ioe6fjj.png)  
 In the above screenshot, the programm called handleRequest() and search(). The argument is "in". The value result is "xinhao" because xinhao contains "in".  
   
+# Part 2
+1. In the ListExample file, the failure-inducing input for function filter() is:  
+```
+import static org.junit.Assert.*;
+import java.util.Arrays;
+import java.util.List;
+import org.junit.*;
+
+public class ListTests {
+    String[] arr = new String[] {"a", "b", "c", "d"};
+    List<String> eg = Arrays.asList(arr);
+    StringChecker sc = new StringChecker() {
+        public boolean checkString(String s){
+            if(s.length()==1){return true;}
+            return false;
+        } 
+    };
+    
+    @Test
+    public void testFilter(){
+
+        assertEquals(eg, ListExamples.filter(eg, sc));
+```  
+The symptom is that the expected output is `[a, b, c, d]` while the actual output is `[d, c, b, a]`.  
+The bug is that the program always puts the checked element of the list at index 0, which is the beginning of the list. 
+By doing so, it changes the order of the original input. Therefore, we see that the actual output is not in the same order as the
+original input.  
+
+  
 
 
 
